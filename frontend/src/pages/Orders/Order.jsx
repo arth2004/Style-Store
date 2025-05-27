@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 
-const Order = () => {
+const Order = () => {   
   const { id: orderId } = useParams();
 
   const {
