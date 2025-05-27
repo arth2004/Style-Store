@@ -28,7 +28,7 @@ import Home from "./pages/Home.jsx";
 import Favourites from "./pages/Products/Favourites.jsx";
 import ProductDetails from "./pages/Products/ProductDetails.jsx";
 import Cart from "./pages/Cart.jsx";
-import Shop from "./pages/shop.jsx";
+import Shop from "./pages/Shop.jsx";
 import Shipping from "./pages/Orders/Shipping.jsx";
 import PlaceOrder from "./pages/Orders/PLaceOrder.jsx";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
