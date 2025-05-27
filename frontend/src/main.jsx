@@ -30,12 +30,12 @@ import ProductDetails from "./pages/Products/ProductDetails.jsx";
 import Cart from "./pages/Cart.jsx";
 import Shop from "./pages/Shop.jsx";
 import Shipping from "./pages/Orders/Shipping.jsx";
-import PlaceOrder from "./pages/Orders/PLaceOrder.jsx";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Order from "./pages/Orders/Order.jsx";
 import UserOrder from "./pages/User/UserOrder.jsx";
 import OrderList from "./pages/Admin/OrderList.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
+import PlaceOrder from "./pages/Orders/PLaceOrder.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
