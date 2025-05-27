@@ -21,7 +21,7 @@ import Profile from "./pages/User/Profile.jsx";
 import AdminRoute from "./pages/Admin/AdminRoute.jsx";
 import UserList from "./pages/Admin/UserList.jsx";
 import CategoryLists from "./pages/Admin/CategoryLists.jsx";
-import ProductList from "./pages/Admin/productList.jsx";
+import ProductList from "./pages/Admin/ProductList.jsx";
 import { ProductUpdate } from "./pages/Admin/ProductUpdate.jsx";
 import AllProducts from "./pages/Admin/AllProducts.jsx";
 import Home from "./pages/Home.jsx";
@@ -31,7 +31,7 @@ import Cart from "./pages/Cart.jsx";
 import Shop from "./pages/shop.jsx";
 import Shipping from "./pages/Orders/Shipping.jsx";
 import PlaceOrder from "./pages/Orders/PLaceOrder.jsx";
-import {PayPalScriptProvider} from '@paypal/react-paypal-js'
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import Order from "./pages/Orders/Order.jsx";
 import UserOrder from "./pages/User/UserOrder.jsx";
 import OrderList from "./pages/Admin/OrderList.jsx";
@@ -49,7 +49,7 @@ const router = createBrowserRouter(
       <Route path="/shop" element={<Shop />} />
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<Profile />} />
-        <Route path="/user-orders" element={<UserOrder/>}/>
+        <Route path="/user-orders" element={<UserOrder />} />
         <Route path="/shipping" element={<Shipping />} />
         <Route path="/placeOrder" element={<PlaceOrder />} />
         <Route path="/Order/:id" element={<Order />} />
