@@ -35,7 +35,7 @@ import Order from "./pages/Orders/Order.jsx";
 import UserOrder from "./pages/User/UserOrder.jsx";
 import OrderList from "./pages/Admin/OrderList.jsx";
 import AdminDashboard from "./pages/Admin/AdminDashboard.jsx";
-import PlaceOrder from "./pages/Orders/PLaceOrder.jsx";
+import PlaceOrder from "./pages/Orders/PlaceOrder.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
