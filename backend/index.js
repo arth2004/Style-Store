@@ -11,6 +11,7 @@ import categoryRoutes from "./routes/categoryRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import uploadRoutes from "./routes/uploadRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
+import cors from "cors";
 
 dotenv.config();
 const port = process.env.port || 5000;
@@ -18,6 +19,12 @@ const port = process.env.port || 5000;
 connectDB();
 
 const app = express();
+app.use(
+  cors({
+    origin: "https://style-store-qwiew2jlr-arth-agrawals-projects.vercel.app",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
