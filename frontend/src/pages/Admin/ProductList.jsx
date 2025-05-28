@@ -23,6 +23,7 @@ const ProductList = () => {
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
   const { data: categories } = useFetchCategoriesQuery();
+  const backendBaseUrl = "https://style-store-eedn.onrender.com"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -57,8 +58,9 @@ const ProductList = () => {
       try {
         const res = await uploadProductImage(formData).unwrap();
         toast.success(res.message);
+        const fullImageUrl = `${backendBaseUrl}${res.image}`;
         setImage(res.image);
-        setImageUrl(res.image);
+        setImageUrl(fullImageUrl);
       } catch (error) {
         toast.error(error?.data?.message || error.error);
       }
