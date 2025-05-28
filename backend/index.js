@@ -21,7 +21,7 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: "https://style-store-qwiew2jlr-arth-agrawals-projects.vercel.app",
+    origin: "https://style-store-nine.vercel.app/",
     credentials: true,
   })
 );
