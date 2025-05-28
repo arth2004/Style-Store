@@ -21,7 +21,7 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: "https://style-store-nine.vercel.app/",
+    origin: "https://style-store-nine.vercel.app",
     credentials: true,
   })
 );
