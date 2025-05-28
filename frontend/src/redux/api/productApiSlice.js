@@ -1,4 +1,4 @@
-import { apiSlice } from "./apislice";
+import { apiSlice } from "./apiSlice.js";
 import { PRODUCT_URL, UPLOAD_URL } from "../constants";
 
 export const productApiSlice = apiSlice.injectEndpoints({
@@ -92,5 +92,5 @@ export const {
   useGetTopProductsQuery,
   useUpdateProductMutation,
   useUploadProductImageMutation,
-  useGetFilteredProductsQuery
+  useGetFilteredProductsQuery,
 } = productApiSlice;

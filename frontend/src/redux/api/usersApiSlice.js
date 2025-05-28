@@ -1,4 +1,4 @@
-import { apiSlice } from "./apislice";
+import { apiSlice } from "./apiSlice.js";
 import { USERS_URL } from "../constants";
 
 export const userApiSlice = apiSlice.injectEndpoints({
@@ -11,7 +11,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
       }),
     }),
     logout: builder.mutation({
-      query: () => ({ 
+      query: () => ({
         url: `${USERS_URL}/logout`,
         method: "POST",
       }),
@@ -55,7 +55,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         body: data,
       }),
-      invalidatesTags:["User"],
+      invalidatesTags: ["User"],
     }),
   }),
 });
