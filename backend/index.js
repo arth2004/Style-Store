@@ -19,13 +19,16 @@ const port = process.env.port || 5000;
 connectDB();
 
 const app = express();
+const allowedOrigins = [
+  "https://style-store-nine.vercel.app",
+  "http://localhost:3000", // local React dev
+];
 app.use(
   cors({
-    origin: "https://style-store-nine.vercel.app",
+    origin: allowedOrigins,
     credentials: true,
   })
 );
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -42,5 +45,16 @@ app.get("/api/config/paypal", (req, res) => {
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID });
 });
 
+app.use((req, res, next) => {
+  res.status(404).json({ message: "Route not found" });
+});
+
+app.use((err, req, res, next) => {
+  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+  res.status(statusCode).json({
+    message: err.message,
+    stack: process.env.NODE_ENV === "production" ? null : err.stack,
+  });
+});
 
 app.listen(port, console.log(`Server running on port: ${port}`));
