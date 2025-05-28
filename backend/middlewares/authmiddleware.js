@@ -26,4 +26,4 @@ export const authorizeAdmin = (req, res, next) => {
   } else {
     res.status(401).send("Not authorised as an admin");
   }
-};  
+}; 

@@ -29,7 +29,9 @@ const Cart = () => {
           <div className="flex flex-col justify-center items-center h-screen w-full">
             <div className="text-3xl ">Your cart is empty!!</div>
             <div>
-              <Link to="/shop" className="text-xl font-bold">GO TO SHOP</Link>
+              <Link to="/shop" className="text-xl font-bold">
+                GO TO SHOP
+              </Link>
             </div>
           </div>
         ) : (
