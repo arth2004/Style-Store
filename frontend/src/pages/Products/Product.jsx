@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 import HeartIcon from "./HeartIcon";
 
-const   Product = ({ product }) => {
+const Product = ({ product }) => {
+  const backendBaseUrl = "https://style-store-eedn.onrender.com";
+  const normalizedImagePath = product.image.replace(/\\/g, "/");
   return (
     <div className="w-[25rem]  p-3 relative">
       <div className="relative">
         <img
-          src={product.image}
+          src={`${backendBaseUrl}${normalizedImagePath}`}
+          // src={product.image}
           alt={product.name}
           className="w-[30rem] rounded"
         />
