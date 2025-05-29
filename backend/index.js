@@ -35,7 +35,7 @@ app.use(cookieParser());
 const __dirname = path.resolve();
 console.log(__dirname);
 
-app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
 app.use("/api/users", userRoutes);
 app.use("/api/category", categoryRoutes);
@@ -48,7 +48,7 @@ app.get("/api/config/paypal", (req, res) => {
 });
 
 app.get("/test-image", (req, res) => {
-  res.sendFile(path.join(__dirname, "uploads/image-1748505742782.jpg"));
+  res.sendFile(path.join(__dirname, "../uploads/image-1748505742782.jpg"));
 });
 
 app.use((req, res, next) => {
