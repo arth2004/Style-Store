@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { addToCart, removeFromCart } from "../redux/feauture/cart/cartSlice";
 import { FaTrash } from "react-icons/fa";
+import backendBaseUrl from "../config";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -38,11 +39,11 @@ const Cart = () => {
           <>
             <div className="flex flex-col w-[80%]">
               <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
-              {cartItems.map((item) => (
+              {cartItems.map((item) =>  (
                 <div key={item._id} className="flex  pb-2 mb-[1rem]">
                   <div className="min-w-[5rem] w-[5rem] h-[5rem] sm:w-[6rem] sm:h-[6rem]">
                     <img
-                      src={item.image}
+                      src={`${backendBaseUrl}${item.image.replace(/\\/g, "/")}`}
                       alt={item.name}
                       className="w-full h-full object-cover rounded"
                     />

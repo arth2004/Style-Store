@@ -7,6 +7,7 @@ import {
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
+import backendBaseUrl from "../../config";
 
 const ProductList = () => {
   const [image, setImage] = useState("");
@@ -23,7 +24,6 @@ const ProductList = () => {
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
   const { data: categories } = useFetchCategoriesQuery();
-  const backendBaseUrl = "https://style-store-eedn.onrender.com"
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -76,7 +76,7 @@ const ProductList = () => {
           {imageUrl && (
             <div className="text-center mb-4">
               <img
-                src={imageUrl}
+                src={`${backendBaseUrl}${imageUrl.replace(/\\/g, "/")}`}
                 alt="product"
                 className="block mx-auto max-h-[200px] rounded-lg"
               />

@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { clearCartItems } from "../../redux/feauture/cart/cartSlice";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
+import backendBaseUrl from "../../config";
 
 const PlaceOrder = () => {
   const navigate = useNavigate();
@@ -72,7 +73,7 @@ const PlaceOrder = () => {
                   <tr key={index}>
                     <td className="p-2">
                       <img
-                        src={item.image}
+                        src={`${backendBaseUrl}${item.image.replace(/\\/g, "/")}`}
                         alt={item.name}
                         className="w-16 h-16 object-cover"
                       />
