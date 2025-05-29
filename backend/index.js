@@ -33,7 +33,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const __dirname = path.resolve();
-app.use("/uploads", express.static(path.join(__dirname + "/uploads")));
+console.log(__dirname);
+
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use("/api/users", userRoutes);
 app.use("/api/category", categoryRoutes);
