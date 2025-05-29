@@ -47,6 +47,10 @@ app.get("/api/config/paypal", (req, res) => {
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID });
 });
 
+app.get("/test-image", (req, res) => {
+  res.sendFile(path.join(__dirname, "uploads/image-1748505742782.jpg"));
+});
+
 app.use((req, res, next) => {
   res.status(404).json({ message: "Route not found" });
 });
