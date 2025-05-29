@@ -14,7 +14,7 @@ import Message from "../../components/Message";
 
 const ProductCarousel = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
-
+  const normalizedImagePath = products.image.replace(/\\/g, "/");
   const settings = {
     dots: false,
     infinite: true,
@@ -53,7 +53,8 @@ const ProductCarousel = () => {
             }) => (
               <div key={_id}>
                 <img
-                  src={image}
+                  // src={image}
+                  src={`${backendBaseUrl}${normalizedImagePath}`}
                   alt={name}
                   className="w-full rounded-lg object-cover h-[30rem]"
                 />
@@ -77,8 +78,8 @@ const ProductCarousel = () => {
                         {moment(createdAt).fromNow()}
                       </h1>
                       <h1 className="flex items-center mb-6">
-                        <FaStar className="mr-2 text-white" /> Reviews:{" "} 
-                        { numReviews}
+                        <FaStar className="mr-2 text-white" /> Reviews:{" "}
+                        {numReviews}
                       </h1>
                     </div>
 

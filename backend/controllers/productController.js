@@ -105,8 +105,7 @@ export const fetchProductsById = asyncHandler(async (req, res) => {
 export const fetchAllProducts = asyncHandler(async (req, res) => {
   try {
     const products = await Product.find({})
-      .populate("category")
-      .limit(12)
+      .populate("category") 
       .sort({ createAt: -1 });
     res.json(products);
   } catch (error) {
@@ -161,25 +160,25 @@ export const fetchTopProducts = asyncHandler(async (req, res) => {
 });
 
 export const fetchNewProducts = asyncHandler(async (req, res) => {
-   try {
-     const products = await Product.find().sort({ _id: -1 }).limit(5);
-     res.json(products);
-   } catch (error) {
-     console.error(error);
-     res.status(400).json(error.message);
-   }
- }); 
-
- export const filterProducts = asyncHandler(async(req,res)=>{
   try {
-    const {checked,radio}=req.body
-    let args={}
-    if(checked.length>0) args.category=checked
-    if(radio.length>0) args.price={$gte:radio[0],$lte:radio[1]} // greater than or equal to and less than 
-    const products = await Product.find(args)
+    const products = await Product.find().sort({ _id: -1 }).limit(5);
     res.json(products);
   } catch (error) {
     console.error(error);
-     res.status(400).json(error.message);
+    res.status(400).json(error.message);
   }
- })
+});
+
+export const filterProducts = asyncHandler(async (req, res) => {
+  try {
+    const { checked, radio } = req.body;
+    let args = {};
+    if (checked.length > 0) args.category = checked;
+    if (radio.length > 0) args.price = { $gte: radio[0], $lte: radio[1] }; // greater than or equal to and less than
+    const products = await Product.find(args);
+    res.json(products);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json(error.message);
+  }
+});
