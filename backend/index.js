@@ -51,6 +51,14 @@ app.get("/test-image", (req, res) => {
   res.sendFile(path.join(__dirname, "../uploads/image-1748505742782.jpg"));
 });
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
+  });
+}
+
 app.use((req, res, next) => {
   res.status(404).json({ message: "Route not found" });
 });
