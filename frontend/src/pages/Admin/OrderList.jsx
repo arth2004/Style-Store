@@ -4,6 +4,7 @@ import AdminMenu from "./AdminMenu";
 import { Link } from "react-router";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
+import backendBaseUrl from "../../config";
 
 const OrderList = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
@@ -36,7 +37,7 @@ const OrderList = () => {
               <tr key={order._id}>
                 <td>
                   <img
-                    src={order.orderItems[0].image}
+                    src={`${backendBaseUrl}${order.orderItems[0].image.replace(/\\/g, "/")}`}
                     alt={order._id}
                     className="w-[5rem] pt-4"
                   />

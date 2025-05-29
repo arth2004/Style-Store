@@ -4,6 +4,7 @@ import Loader from "../../components/Loader";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import AdminMenu from "./AdminMenu";
+import backendBaseUrl from "../../config";
 
 const AllProducts = () => {
   const { data: products, isLoading, isError } = useAllProductsQuery();
@@ -34,7 +35,7 @@ const AllProducts = () => {
               >
                 <div className="flex gap-4 p-3  hover:shadow-md transition-all">
                   <img
-                    src={product.image}
+                    src={`${backendBaseUrl}${product.image.replace(/\\/g, "/")}`}
                     alt={product.name}
                     className="w-[10rem] h-[8rem] object-cover rounded-md"
                   />
