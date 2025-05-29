@@ -21,6 +21,7 @@ import Rating from "./Rating";
 import ProductTabs from "./ProductTabs";
 import { toast } from "react-toastify";
 import { addToCart } from "../../redux/feauture/cart/cartSlice";
+import backendBaseUrl from "../../config";
 
 const ProductDetails = () => {
   const { id: productId } = useParams();
@@ -59,14 +60,10 @@ const ProductDetails = () => {
     dispatch(addToCart({ ...product, qty }));
     navigate("/cart");
   };
-
   return (
     <>
       <div>
-        <Link
-          to="/"
-          className="text-white font-semibold hover:underline"
-        >
+        <Link to="/" className="text-white font-semibold hover:underline">
           Go Back
         </Link>
       </div>
@@ -82,7 +79,7 @@ const ProductDetails = () => {
           <div className="flex flex-wrap relative items-between mt-[2rem] ">
             <div>
               <img
-                src={product.image}
+                src={`${backendBaseUrl}${product.image.replace(/\\/g, "/")}`}
                 alt={product.name}
                 className="w-full xl:w-[30rem] lg:w-[25rem] md:w-[20rem] sm:w-[10rem] mr-[2rem]"
               />

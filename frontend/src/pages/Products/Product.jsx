@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import HeartIcon from "./HeartIcon";
+import backendBaseUrl from "../../config";
 
 const Product = ({ product }) => {
-  const backendBaseUrl = "https://style-store-eedn.onrender.com";
+ 
   const normalizedImagePath = product.image.replace(/\\/g, "/");
   return (
     <div className="w-[25rem]  p-3 relative">

@@ -4,6 +4,7 @@ import HeartIcon from "./HeartIcon";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { addToCart } from "../../redux/feauture/cart/cartSlice";
 import { toast } from "react-toastify";
+import backendBaseUrl from "../../config";
 
 const ProductCard = ({ p }) => {
   const dispatch = useDispatch();
@@ -11,6 +12,7 @@ const ProductCard = ({ p }) => {
     dispatch(addToCart({ ...product, qty }));
     toast.success("Item added successfully")
   };
+  const normalizedImagePath = p.image.replace(/\\/g, "/");
   return (
     <div className="max-w-xs relative bg-[#1A1A1A] shaodw dark:bg-gray-800 dark:border-gray-700">
       <section className="relative">
@@ -20,7 +22,7 @@ const ProductCard = ({ p }) => {
           </span>
           <img
             className="cursor-pointer w-full"
-            src={p.image}
+            src={`${backendBaseUrl}${normalizedImagePath}`}
             alt={p.name}
             style={{ height: "170px", objectFit: "cover" }}
           />
