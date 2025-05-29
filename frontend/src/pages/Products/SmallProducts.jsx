@@ -3,17 +3,18 @@ import HeartIcon from "./HeartIcon";
 // import HeartIcon from "./HeartIcon";
 
 const SmallProduct = ({ product }) => {
+  const backendBaseUrl = "https://style-store-eedn.onrender.com";
+  const normalizedImagePath = product.image.replace(/\\/g, "/");
   return (
     <div className="w-[19rem] p-3 relative">
       <div className="relative">
         <img
-          src={product.image}
+          src={`${backendBaseUrl}${normalizedImagePath}`}
           alt={product.name}
-          className="h-auto rounded "
+          className="h-auto rounded"
         />
         <HeartIcon product={product} />
       </div>
-
       <div className="p-4">
         <Link to={`/product/${product._id}`}>
           <h2 className="flex justify-between items-center">
