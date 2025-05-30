@@ -37,7 +37,8 @@ const OrderList = () => {
               <tr key={order._id}>
                 <td>
                   <img
-                    src={`${backendBaseUrl}${order.orderItems[0].image.replace(/\\/g, "/")}`}
+                    // src={`${backendBaseUrl}${order.orderItems[0].image.replace(/\\/g, "/")}`}
+                    src={order.orderItems[0].image}
                     alt={order._id}
                     className="w-[5rem] pt-4"
                   />

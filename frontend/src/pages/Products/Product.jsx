@@ -3,8 +3,7 @@ import HeartIcon from "./HeartIcon";
 import backendBaseUrl from "../../config";
 
 const Product = ({ product }) => {
- 
-  const normalizedImagePath = product.image.replace(/\\/g, "/");
+  // const normalizedImagePath = product.image.replace(/\\/g, "/");
   return (
     <div className="w-[25rem]  p-3 relative">
       <div className="relative">

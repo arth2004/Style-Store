@@ -6,9 +6,7 @@ const Favourites = () => {
   const favourites = useSelector(selectFavouriteProduct);
   return (
     <div className="flex flex-col">
-      <h1 className="text-lg font-bold px-3">
-        FAVORITE PRODUCTS
-      </h1>
+      <h1 className="text-lg font-bold px-3">FAVORITE PRODUCTS</h1>
 
       <div className="flex flex-wrap">
         {favourites.map((product) => (
