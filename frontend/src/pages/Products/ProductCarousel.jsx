@@ -27,7 +27,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="mb-4 ml-[4rem] mt-[1rem] lg:block xl:block md:block ">
+    <div className="mb-4 w-full">
       {isLoading ? null : error ? (
         <Message variant="danger">
           {error?.data?.message || error.error}
@@ -35,7 +35,7 @@ const ProductCarousel = () => {
       ) : (
         <Slider
           {...settings}
-          className="xl:w-[45rem]  lg:w-[45rem] md:w-[56rem] sm:w-[40rem] sm:block mr-[1.5rem]"
+          className="w-full"
         >
           {products.map(
             ({
@@ -58,18 +58,18 @@ const ProductCarousel = () => {
                     src={image}
                     // src={`${backendBaseUrl}${normalizedImagePath}`}
                     alt={name}
-                    className="w-full rounded-lg object-cover h-[30rem]"
+                    className="w-full rounded-lg object-cover h-[20rem] sm:h-[25rem] md:h-[30rem]"
                   />
-                  <div className="mt-4 flex justify-between">
-                    <div className="one">
+                  <div className="mt-4 flex flex-col md:flex-row justify-between"> {/* Adjusted parent flex for description and details block */}
+                    <div className="one md:w-1/2 pr-4"> {/* Allow description to take half width on medium+ screens */}
                       <h2>{name}</h2>
                       <p> $ {price}</p> <br /> <br />
-                      <p className="w-[25rem]">
+                      <p> {/* Removed w-[25rem] */}
                         {description.substring(0, 170)} ...
                       </p>
                     </div>
 
-                    <div className="flex justify-between w-[20rem]">
+                    <div className="flex flex-col sm:flex-row sm:justify-between gap-4 w-full md:w-1/2 mt-4 sm:mt-0"> {/* Details block takes other half */}
                       <div className="one">
                         <h1 className="flex items-center mb-6">
                           <FaStore className="mr-2 text-white" /> Brand: {brand}

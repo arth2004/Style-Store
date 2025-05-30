@@ -6,7 +6,7 @@ import backendBaseUrl from "../../config";
 const SmallProduct = ({ product }) => {
   const normalizedImagePath = product.image.replace(/\\/g, "/");
   return (
-    <div className="w-[19rem] p-3 relative">
+    <div className="w-full p-3 relative">
       <div className="relative">
         <img
           // src={`${backendBaseUrl}${normalizedImagePath}`}
