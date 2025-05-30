@@ -6,6 +6,7 @@ import {
   AiOutlineLogin,
   AiOutlineUserAdd,
   AiOutlineShoppingCart,
+  AiOutlineMenu,
 } from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -50,17 +51,19 @@ const Navigation = () => {
   };
 
   return (
-    <div
-      style={{ zIndex: 999 }}
-      className={`${
-        showSidebar ? "hidden" : "flex"
-      } xl:flex lg:flex md:hidden sm:hidden flex-col fixed justify-between py-6 px-4 bg-black text-white  h-screen  hover:w-[200px] transition-all duration-300 ease-in-out`}
-      id="navigation-container"
-    >
-      <div className="flex flex-col justify-center space-y-4">
-        <Link
-          to="/"
-          className="flex items-center gap-3 mt-10 group transition-transform hover:translate-x-2"
+    <>
+      <div
+        style={{ zIndex: 999 }}
+        className={`${
+          showSidebar ? "flex" : "hidden"
+        } xl:flex flex-col fixed justify-between py-6 px-4 bg-black text-white h-screen hover:w-[200px] transition-all duration-300 ease-in-out xl:w-[7%] xl:hover:w-[9%]`}
+        id="navigation-container"
+      >
+        <div className="flex flex-col justify-center space-y-4">
+          <Link
+            to="/"
+            className="flex items-center gap-3 mt-10 group transition-transform hover:translate-x-2"
+            onClick={closeSidebar}
         >
           <AiOutlineHome
             className="text-xl group-hover:text-gray-300 transition-colors duration-200"
@@ -73,6 +76,7 @@ const Navigation = () => {
         <Link
           to="/shop"
           className="flex items-center gap-3 mt-10 group transition-transform hover:translate-x-2"
+          onClick={closeSidebar}
         >
           <AiOutlineShopping
             className="text-xl group-hover:text-gray-300 transition-colors duration-200"
@@ -86,6 +90,7 @@ const Navigation = () => {
         <Link
           to="/cart"
           className="flex items-center gap-3 mt-10 group hover:translate-x-2 transition-transform"
+          onClick={closeSidebar}
         >
           <div className="relative">
             <AiOutlineShoppingCart
@@ -102,6 +107,7 @@ const Navigation = () => {
         <Link
           to="/favorite"
           className="flex items-center gap-3 mt-10 group hover:translate-x-2 transition-transform"
+          onClick={closeSidebar}
         >
           <div className="relative">
             <FaHeart
@@ -223,6 +229,7 @@ const Navigation = () => {
               <Link
                 to="/login"
                 className="flex items-center mt-5 gap-2 hover:text-white text-gray-400 transition-transform transform hover:translate-x-2"
+                onClick={closeSidebar}
               >
                 <AiOutlineLogin size={22} />
                 <span className="hidden nav-item-name group-hover:inline-block">
@@ -234,6 +241,7 @@ const Navigation = () => {
               <Link
                 to="/register"
                 className="flex items-center mt-5 transition-transform transform hover:translate-x-2"
+                onClick={closeSidebar}
               >
                 <AiOutlineUserAdd size={26} />
                 <span className="hidden nav-item-name">REGISTER</span>
@@ -243,6 +251,14 @@ const Navigation = () => {
         )}
       </div>
     </div>
+    {/* Menu Button */}
+    <button
+      className="lg:hidden xl:hidden fixed top-4 right-4 z-[1000] p-2 bg-gray-800 text-white rounded-md"
+      onClick={toggleSidebar}
+    >
+      <AiOutlineMenu size={24} />
+    </button>
+  </>
   );
 };
 
