@@ -15,7 +15,7 @@ const AllProducts = () => {
     return <div>Error Loading Products</div>;
   }
   return (
-    <div className="container mx-[9rem]">
+    <div className="container">
       <div className="md:w-1/4 p-3 mt-2">
         <AdminMenu />
       </div>
@@ -35,7 +35,8 @@ const AllProducts = () => {
               >
                 <div className="flex gap-4 p-3  hover:shadow-md transition-all">
                   <img
-                    src={`${backendBaseUrl}${product.image.replace(/\\/g, "/")}`}
+                    // src={`${backendBaseUrl}${product.image.replace(/\\/g, "/")}`}
+                    src={product.image}
                     alt={product.name}
                     className="w-[10rem] h-[8rem] object-cover rounded-md"
                   />

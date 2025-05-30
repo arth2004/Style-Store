@@ -43,7 +43,8 @@ const Cart = () => {
                 <div key={item._id} className="flex  pb-2 mb-[1rem]">
                   <div className="min-w-[5rem] w-[5rem] h-[5rem] sm:w-[6rem] sm:h-[6rem]">
                     <img
-                      src={`${backendBaseUrl}${item.image.replace(/\\/g, "/")}`}
+                      // src={`${backendBaseUrl}${item.image.replace(/\\/g, "/")}`}
+                      src={item.image}
                       alt={item.name}
                       className="w-full h-full object-cover rounded"
                     />

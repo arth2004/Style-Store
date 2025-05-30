@@ -9,8 +9,8 @@ const SmallProduct = ({ product }) => {
     <div className="w-[19rem] p-3 relative">
       <div className="relative">
         <img
-          src={`${backendBaseUrl}${normalizedImagePath}`}
-          // src={product.image}
+          // src={`${backendBaseUrl}${normalizedImagePath}`}
+          src={product.image}
           alt={product.name}
           className="h-auto rounded"
         />

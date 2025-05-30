@@ -9,8 +9,8 @@ const Product = ({ product }) => {
     <div className="w-[25rem]  p-3 relative">
       <div className="relative">
         <img
-          src={`${backendBaseUrl}${normalizedImagePath}`}
-          // src={product.image}
+          // src={`${backendBaseUrl}${normalizedImagePath}`}
+          src={product.image}
           alt={product.name}
           className="w-[30rem] rounded"
         />

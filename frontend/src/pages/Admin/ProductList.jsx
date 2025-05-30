@@ -7,10 +7,11 @@ import {
 import { useFetchCategoriesQuery } from "../../redux/api/categoryApiSlice";
 import { toast } from "react-toastify";
 import AdminMenu from "./AdminMenu";
-import backendBaseUrl from "../../config";
+// import backendBaseUrl from "../../config";
 
 const ProductList = () => {
-  const [image, setImage] = useState("");
+  const [imageFile, setImageFile] = useState(null); // For showing file name
+  const [image, setImage] = useState(""); // Will hold Cloudinary URL
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
@@ -20,7 +21,6 @@ const ProductList = () => {
   const [stock, setStock] = useState(0);
   const [imageUrl, setImageUrl] = useState(null);
   const navigate = useNavigate();
-
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
   const { data: categories } = useFetchCategoriesQuery();
@@ -29,7 +29,7 @@ const ProductList = () => {
     e.preventDefault();
     try {
       const productData = new FormData();
-      productData.append("image", image);
+      productData.append("image", image); // This is the Cloudinary URL
       productData.append("name", name);
       productData.append("description", description);
       productData.append("price", price);
@@ -52,31 +52,36 @@ const ProductList = () => {
     }
   };
 
-    const uploadFileHandler = async (e) => {
-      const formData = new FormData();
-      formData.append("image", e.target.files[0]);
-      try {
-        const res = await uploadProductImage(formData).unwrap();
-        toast.success(res.message);
-        const fullImageUrl = `${backendBaseUrl}${res.image}`;
-        setImage(res.image);
-        setImageUrl(fullImageUrl);
-      } catch (error) {
-        toast.error(error?.data?.message || error.error);
-      }
-    };
+  const uploadFileHandler = async (e) => {
+    const file = e.target.files[0];
+    setImageFile(file);
+    const formData = new FormData();
+    formData.append("image", e.target.files[0]);
+    try {
+      const res = await uploadProductImage(formData).unwrap();
+      toast.success(res.message);
+      // const fullImageUrl = `${backendBaseUrl}${res.image}`;
+      // setImage(res.image);
+      // setImageUrl(fullImageUrl);
+      setImage(res.image); // Cloudinary URL
+      setImageUrl(res.image); // Directly usable
+    } catch (error) {
+      toast.error(error?.data?.message || error.error);
+    }
+  };
 
   return (
     <div className="container sm:mx-[0] p-4">
       <div className="flex flex-col md:flex-row">
-      <AdminMenu />
+        <AdminMenu />
         <div className="md:w-3/4 p-3">
           <h2 className="text-xl font-bold mb-4">Create Product</h2>
 
           {imageUrl && (
             <div className="text-center mb-4">
               <img
-                src={`${backendBaseUrl}${imageUrl.replace(/\\/g, "/")}`}
+                // src={`${backendBaseUrl}${imageUrl.replace(/\\/g, "/")}`}
+                src={imageUrl}
                 alt="product"
                 className="block mx-auto max-h-[200px] rounded-lg"
               />
@@ -84,21 +89,24 @@ const ProductList = () => {
           )}
 
           <div className="mb-3">
-              <label className="text-white px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-6">
-                {image ? image.name : "Upload Image "}
-                <input
-                  type="file"
-                  name="image"
-                  accept="image/*"
-                  onChange={uploadFileHandler}
-                  className="hidden"
-                  id="image-upload"
-                />
-                <label htmlFor="image-upload" className="cursor-pointer text-blue-500 font-semibold">
-                  {image ? "Change Image" : "Click to Upload"}
-                </label>
+            <label className="text-white px-4 block w-full text-center rounded-lg cursor-pointer font-bold py-6">
+              {imageFile ? imageFile.name : "Upload Image "}
+              <input
+                type="file"
+                name="image"
+                accept="image/*"
+                onChange={uploadFileHandler}
+                className="hidden"
+                id="image-upload"
+              />
+              <label
+                htmlFor="image-upload"
+                className="cursor-pointer text-blue-500 font-semibold"
+              >
+                {imageFile ? "Change Image" : "Click to Upload"}
               </label>
-            </div>
+            </label>
+          </div>
 
           <div className="p-4">
             <div className="flex flex-wrap mb-4">

@@ -79,7 +79,8 @@ const ProductDetails = () => {
           <div className="flex flex-wrap relative items-between mt-[2rem] ">
             <div>
               <img
-                src={`${backendBaseUrl}${product.image.replace(/\\/g, "/")}`}
+                // src={`${backendBaseUrl}${product.image.replace(/\\/g, "/")}`}
+                src={product.image}
                 alt={product.name}
                 className="w-full xl:w-[30rem] lg:w-[25rem] md:w-[20rem] sm:w-[10rem] mr-[2rem]"
               />

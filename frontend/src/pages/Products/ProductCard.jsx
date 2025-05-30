@@ -12,7 +12,7 @@ const ProductCard = ({ p }) => {
     dispatch(addToCart({ ...product, qty }));
     toast.success("Item added successfully")
   };
-  const normalizedImagePath = p.image.replace(/\\/g, "/");
+  // const normalizedImagePath = p.image.replace(/\\/g, "/");
   return (
     <div className="max-w-xs relative bg-[#1A1A1A] shaodw dark:bg-gray-800 dark:border-gray-700">
       <section className="relative">
@@ -22,7 +22,8 @@ const ProductCard = ({ p }) => {
           </span>
           <img
             className="cursor-pointer w-full"
-            src={`${backendBaseUrl}${normalizedImagePath}`}
+            // src={`${backendBaseUrl}${normalizedImagePath}`}
+            src={p.image}
             alt={p.name}
             style={{ height: "170px", objectFit: "cover" }}
           />

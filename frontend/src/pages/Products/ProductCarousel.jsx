@@ -51,12 +51,12 @@ const ProductCarousel = () => {
               quantity,
               countInStock,
             }) => {
-              const normalizedImagePath = image.replace(/\\/g, "/");
+              {/* const normalizedImagePath = image.replace(/\\/g, "/"); */}
               return (
                 <div key={_id}>
                   <img
-                    // src={image}
-                    src={`${backendBaseUrl}${normalizedImagePath}`}
+                    src={image}
+                    // src={`${backendBaseUrl}${normalizedImagePath}`}
                     alt={name}
                     className="w-full rounded-lg object-cover h-[30rem]"
                   />
