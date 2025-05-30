@@ -33,7 +33,11 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({ storage, fileFilter,limits: { fileSize: 5 * 1024 * 1024 }, });
+const upload = multer({
+  storage,
+  fileFilter,
+  limits: { fileSize: 5 * 1024 * 1024 },
+});
 const uploadSingleImage = upload.single("image");
 
 router.post("/", (req, res) => {
