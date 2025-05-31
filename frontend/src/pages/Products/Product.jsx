@@ -3,24 +3,22 @@ import HeartIcon from "./HeartIcon";
 import backendBaseUrl from "../../config";
 
 const Product = ({ product }) => {
-  // const normalizedImagePath = product.image.replace(/\\/g, "/");
   return (
-    <div className="w-[25rem]  p-3 relative">
-      <div className="relative">
+    <div className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl p-3 mx-auto">
+      <div className="relative w-full overflow-hidden rounded">
         <img
-          // src={`${backendBaseUrl}${normalizedImagePath}`}
           src={product.image}
           alt={product.name}
-          className="w-[30rem] rounded"
+          className="w-full h-auto object-cover rounded transition-transform duration-300 hover:scale-105"
         />
         <HeartIcon product={product} />
       </div>
 
       <div className="p-4">
         <Link to={`/product/${product._id}`}>
-          <h2 className="flex justify-between items-center">
-            <div className="text-lg">{product.name}</div>
-            <span className="bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+          <h2 className="flex justify-between items-center text-base sm:text-lg">
+            <div className="text-gray-800 font-semibold">{product.name}</div>
+            <span className="bg-pink-100 text-pink-800 text-xs sm:text-sm font-medium px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
               $ {product.price}
             </span>
           </h2>
@@ -29,5 +27,6 @@ const Product = ({ product }) => {
     </div>
   );
 };
+
 
 export default Product;

@@ -72,7 +72,7 @@ const ProductList = () => {
 
   return (
     <div className="container sm:mx-[0] p-4">
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row justify-center">
         <AdminMenu />
         <div className="md:w-3/4 p-3">
           <h2 className="text-xl font-bold mb-4">Create Product</h2>

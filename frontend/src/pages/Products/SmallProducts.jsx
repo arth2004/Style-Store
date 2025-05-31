@@ -4,24 +4,26 @@ import backendBaseUrl from "../../config";
 // import HeartIcon from "./HeartIcon";
 
 const SmallProduct = ({ product }) => {
-  const normalizedImagePath = product.image.replace(/\\/g, "/");
+  // const normalizedImagePath = product.image.replace(/\\/g, "/");
   return (
-    <div className="w-[19rem] p-3 relative">
+    <div className="w-full p-3 shadow-sm rounded-lg">
       <div className="relative">
+        {/* 
+          Make image full-width, auto height. 
+          Use object-cover so it fills the container. 
+        */}
         <img
-          // src={`${backendBaseUrl}${normalizedImagePath}`}
           src={product.image}
           alt={product.name}
-          className="h-auto rounded"
+          className="w-full h-auto object-cover rounded-lg"
         />
-        {/* {console.log(`${backendBaseUrl}${normalizedImagePath}`)} */}
         <HeartIcon product={product} />
       </div>
-      <div className="p-4">
+      <div className="mt-4">
         <Link to={`/product/${product._id}`}>
-          <h2 className="flex justify-between items-center">
-            <div>{product.name}</div>
-            <span className="bg-pink-100 text-pink-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+          <h2 className="flex justify-between items-center text-sm sm:text-base font-semibold">
+            <span className="truncate">{product.name}</span>
+            <span className="bg-pink-100 text-pink-800 text-xs sm:text-sm font-medium px-2 py-0.5 rounded-full">
               ${product.price}
             </span>
           </h2>

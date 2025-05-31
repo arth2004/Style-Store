@@ -14,7 +14,7 @@ const ProductCard = ({ p }) => {
   };
   // const normalizedImagePath = p.image.replace(/\\/g, "/");
   return (
-    <div className="max-w-xs relative bg-[#1A1A1A] shaodw dark:bg-gray-800 dark:border-gray-700">
+    <div className="max-w-xs relative bg-[#1A1A1A] shadow dark:bg-gray-800 dark:border-gray-700">
       <section className="relative">
         <Link to={`/product/${p._id}`}>
           <span className="absolute bottom-1 right-0.5 bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">

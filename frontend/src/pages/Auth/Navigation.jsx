@@ -56,9 +56,9 @@ const Navigation = () => {
         style={{ zIndex: 999 }}
         className={`fixed top-0 left-0 h-screen bg-black text-white transition-all duration-300 ease-in-out ${
           showSidebar ? "flex" : "hidden"
-        } flex-col justify-between py-6 px-4 xl:flex xl:w-[7%] xl:hover:w-[9%]`}
+        } flex-col justify-between py-6 px-4 xl:flex xl:w-[7%] xl:hover:w-[9%] `}
         id="navigation-container"
-      >
+      > 
         <div className="flex flex-col justify-center space-y-4">
           <Link
             to="/"
@@ -257,7 +257,7 @@ const Navigation = () => {
       </div>
       {/* Menu Button */}
       <button
-        className="lg:hidden xl:hidden fixed top-4 right-4 z-[1000] p-2 bg-gray-800 text-white rounded-md"
+        className="lg:hidden xl:hidden fixed top-2 z-[1000] p-2 bg-gray-800 text-white rounded-md"
         onClick={toggleSidebar}
       >
         <AiOutlineMenu size={24} />

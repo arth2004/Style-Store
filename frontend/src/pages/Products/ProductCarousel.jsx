@@ -27,85 +27,82 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="mb-4 ml-[4rem] mt-[1rem] lg:block xl:block md:block ">
-      {isLoading ? null : error ? (
-        <Message variant="danger">
-          {error?.data?.message || error.error}
-        </Message>
-      ) : (
-        <Slider
-          {...settings}
-          className="xl:w-[45rem]  lg:w-[45rem] md:w-[56rem] sm:w-[40rem] sm:block mr-[1.5rem]"
-        >
-          {products.map(
-            ({
-              image,
-              _id,
-              name,
-              price,
-              description,
-              brand,
-              createdAt,
-              numReviews,
-              rating,
-              quantity,
-              countInStock,
-            }) => {
-              {/* const normalizedImagePath = image.replace(/\\/g, "/"); */}
-              return (
-                <div key={_id}>
-                  <img
-                    src={image}
-                    // src={`${backendBaseUrl}${normalizedImagePath}`}
-                    alt={name}
-                    className="w-full rounded-lg object-cover h-[30rem]"
-                  />
-                  <div className="mt-4 flex justify-between">
-                    <div className="one">
-                      <h2>{name}</h2>
-                      <p> $ {price}</p> <br /> <br />
-                      <p className="w-[25rem]">
-                        {description.substring(0, 170)} ...
-                      </p>
+   <div>
+      <Slider {...settings}>
+        {products.map((prod) => (
+          <div key={prod._id} className="p-2">
+            {/* 
+              The parent container has padding-x 2 ( = 0.5rem) so the slide doesn’t touch edges.
+            */}
+            <div className="w-full rounded-lg shadow-md overflow-hidden ">
+              {/* 
+                Responsive image height:
+                - h-48 (192px) on mobile
+                - at md: h-64 (256px)
+                - at lg: h-80 (320px)
+                - full width always
+                - object-cover to crop nicely
+              */}
+              <img
+                src={prod.image}
+                alt={prod.name}
+                className="w-full md:h-64 lg:h-[30rem] object-cover"
+              />
+
+              <div className="p-4 space-y-4 text-gray-100">
+                <div>
+                  <h2 className="text-lg font-semibold">{prod.name}</h2>
+                  <p className="text-pink-600 font-bold mt-1">
+                    ${prod.price}
+                  </p>
+                </div>
+
+                <p className="text-sm text-gray-300 line-clamp-3">
+                  {prod.description}
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-100">
+                  {/* LEFT COLUMN */}
+                  <div className="space-y-2">
+                    <div className="flex items-center">
+                      <FaStore className="mr-2 text-gray-100" /> Brand:{" "}
+                      <span className="font-medium">{prod.brand}</span>
                     </div>
+                    <div className="flex items-center">
+                      <FaClock className="mr-2 text-gray-100" /> Added:{" "}
+                      <span className="font-medium">
+                        {moment(prod.createdAt).fromNow()}
+                      </span>
+                    </div>
+                    <div className="flex items-center">
+                      <FaStar className="mr-2 text-gray-100" /> Reviews:{" "}
+                      <span className="font-medium">{prod.numReviews}</span>
+                    </div>
+                  </div>
 
-                    <div className="flex justify-between w-[20rem]">
-                      <div className="one">
-                        <h1 className="flex items-center mb-6">
-                          <FaStore className="mr-2 text-white" /> Brand: {brand}
-                        </h1>
-                        <h1 className="flex items-center mb-6">
-                          <FaClock className="mr-2 text-white" /> Added:{" "}
-                          {moment(createdAt).fromNow()}
-                        </h1>
-                        <h1 className="flex items-center mb-6">
-                          <FaStar className="mr-2 text-white" /> Reviews:{" "}
-                          {numReviews}
-                        </h1>
-                      </div>
-
-                      <div className="two">
-                        <h1 className="flex items-center mb-6">
-                          <FaStar className="mr-2 text-white" /> Ratings:{" "}
-                          {Math.round(rating)}
-                        </h1>
-                        <h1 className="flex items-center mb-6">
-                          <FaShoppingCart className="mr-2 text-white" />{" "}
-                          Quantity: {quantity}
-                        </h1>
-                        <h1 className="flex items-center mb-6">
-                          <FaBox className="mr-2 text-white" /> In Stock:{" "}
-                          {countInStock}
-                        </h1>
-                      </div>
+                  {/* RIGHT COLUMN */}
+                  <div className="space-y-2">
+                    <div className="flex items-center">
+                      <FaStar className="mr-2 text-gray-100" /> Ratings:{" "}
+                      <span className="font-medium">
+                        {Math.round(prod.rating)}
+                      </span>
+                    </div>
+                    <div className="flex items-center">
+                      <FaShoppingCart className="mr-2 text-gray-100" /> Qty:{" "}
+                      <span className="font-medium">{prod.quantity}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <FaBox className="mr-2 text-gray-100" /> In Stock:{" "}
+                      <span className="font-medium">{prod.countInStock}</span>
                     </div>
                   </div>
                 </div>
-              );
-            }
-          )}
-        </Slider>
-      )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

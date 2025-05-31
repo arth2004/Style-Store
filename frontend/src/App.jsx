@@ -9,7 +9,7 @@ const App = () => {
     <ToastContainer/>
       <div className="flex min-h-screen ">
         <Navigation />
-        <main className="flex-1 p-4 pl-30">
+        <main className=" px-4 mx-auto container lg:pl-30">
           <Outlet />
         </main>
       </div>
