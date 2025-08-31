@@ -8,7 +8,7 @@ export default defineConfig({
   plugins: [tailwindcss(), react(), flowbiteReact()],
   server: {
     proxy: {
-      "/api/": "http://localhost:5000", 
+      // "/api/": "http://localhost:5000", 
       // "/uploads/": "http://localhost:5000",
     },
   },
