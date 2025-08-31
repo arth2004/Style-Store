@@ -89,7 +89,8 @@ export const fetchProducts = asyncHandler(async (req, res) => {
 
 export const fetchProductsById = asyncHandler(async (req, res) => {
   try {
-    const product = await Product.findById(req.params.id);
+    const product = await Product.findById(req.params.id).populate("category");
+    console.log(product);
     if (product) {
       return res.json(product);
     } else {

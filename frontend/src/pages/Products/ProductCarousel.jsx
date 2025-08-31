@@ -27,7 +27,7 @@ const ProductCarousel = () => {
   };
 
   return (
-   <div>
+    <div>
       <Slider {...settings}>
         {products.map((prod) => (
           <div key={prod._id} className="p-2">
@@ -52,12 +52,10 @@ const ProductCarousel = () => {
               <div className="p-4 space-y-4 text-gray-100">
                 <div>
                   <h2 className="text-lg font-semibold">{prod.name}</h2>
-                  <p className="text-pink-600 font-bold mt-1">
-                    ${prod.price}
-                  </p>
+                  <p className="text-emerald-500 font-bold mt-1">${prod.price}</p>
                 </div>
 
-                <p className="text-sm text-gray-300 line-clamp-3">
+                <p className="text-sm text-[#F5F5F5] line-clamp-3">
                   {prod.description}
                 </p>
 

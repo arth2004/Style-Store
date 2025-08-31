@@ -1,86 +1,122 @@
-/* Base styles for #navigation-container, largely controlled by Tailwind in JSX for xl screens */
+/* Base styles for #navigation-container */
 #navigation-container {
-  transition: width 0.3s ease-in-out; /* Smooth width transition */
-  overflow-x: hidden; /* Hide overflowing content horizontally */
-  /* Tailwind classes in JSX handle: initial width, hover width on xl, height, position, z-index, bg, text color */
+  transition: all 0.3s ease-in-out;
+  overflow-x: hidden;
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* Nav item name default state and hover on XL screens are handled by Tailwind's group-hover in JSX */
-/* .nav-item-name { ... } */
-/* #navigation-container:hover .nav-item-name { ... } */
-/* These can be removed if group-hover is sufficient, or kept as a fallback. */
-/* For now, we'll assume group-hover in JSX is the primary mechanism for XL screens. */
+/* Nav item name styling - hidden by default */
+.nav-item-name {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  color: #FFFFFF;
+  display: none;
+}
 
+/* Show text on hover for XL screens */
+#navigation-container:hover .nav-item-name {
+  display: inline-block !important;
+  opacity: 1 !important;
+}
 
-/* Styles for screens smaller than XL (e.g., tablets and mobiles) */
-@media (max-width: 1279px) { /* Tailwind's xl breakpoint is 1280px */
+/* Enhanced hover effects for navigation items */
+/* #navigation-container a:hover {
+  transform: translateX(8px);
+}
+
+#navigation-container a:hover .nav-item-name {
+  color: #50C878 ;
+  transform: translateX(4px);
+} */
+
+/* Styles for screens smaller than XL (tablets and mobiles) */
+@media (max-width: 1279px) {
   #navigation-container {
-    /* When the sidebar is toggled visible (controlled by 'flex' class from JS/Tailwind) */
-    width: 250px !important; /* A fixed width for tablets and larger phones. Adjust as needed. */
-    /* Tailwind's 'h-screen' handles height. 'overflow-y-auto' can be added if needed. */
-    /* Tailwind's 'fixed', 'bg-black', 'text-white', and z-index from style prop in JSX are applied */
+    width: 280px !important;
+    backdrop-filter: blur(15px);
   }
 
-  /* When sidebar is open on smaller screens, .nav-item-name should be always visible */
   #navigation-container .nav-item-name {
-    display: inline-block !important; /* Or 'block' depending on desired layout */
+    display: inline-block !important;
     opacity: 1 !important;
     white-space: nowrap;
   }
 
-  /* On these screens, the hover effect to change width is not desired as width is fixed when open. */
   #navigation-container:hover {
-    width: 250px !important; /* Keep width consistent, no change on hover */
+    width: 280px !important;
   }
 }
 
-/* Styles for screens smaller than MD (e.g., mobile phones) */
-/* The toggle button is visible on these screens (`md:hidden lg:hidden xl:hidden` in JSX) */
-@media (max-width: 767px) { /* Tailwind's md breakpoint is 768px */
+/* Styles for mobile phones */
+@media (max-width: 767px) {
   #navigation-container {
-    /* A different width for smaller mobile screens, e.g., taking more screen space */
-    width: 280px !important; /* Or a percentage like '75vw' or '80vw'. Adjust as needed. */
-    /* Ensure it has a high enough z-index, set via inline style in JSX for now */
-    /* height: 100vh, overflow-y: auto (if needed) */
+    width: 300px !important;
+    backdrop-filter: blur(20px);
   }
 
-  /* Ensure nav item names are still visible and correctly styled */
   #navigation-container .nav-item-name {
-    display: inline-block !important; /* Or 'block' */
+    display: inline-block !important;
     opacity: 1 !important;
   }
 
-  /* Disable width change on hover for small mobile screens */
   #navigation-container:hover {
-    width: 280px !important; /* Keep width consistent */
+    width: 300px !important;
   }
 }
 
-/* Styles for search input - these might need to be re-evaluated for responsiveness */
-/* If .search-input is part of the #navigation-container */
-.search-input {
-  display: none; /* Hidden by default */
-  opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+/* Dropdown menu enhancements */
+#navigation-container ul {
+  border-radius: 8px;
+  overflow: hidden;
 }
 
-/* On XL screens, search input might appear on hover if #navigation-container expands */
-/* On smaller screens, if #navigation-container has a fixed open width, this hover might be fine, */
-/* or search might be a static part of the header, or revealed differently. */
-/* The current logic makes it appear when #navigation-container is hovered. */
-#navigation-container:hover .search-input {
-  display: block; /* Or 'inline-block' if preferred */
-  opacity: 1;
+#navigation-container ul li a,
+#navigation-container ul li button {
+  transition: all 0.2s ease-in-out;
+  border-left: 3px solid transparent;
 }
 
-#navigation-container:hover .search-icon {
-  display: none; /* Hide search icon when search input is visible */
-  transition: opacity 0.2s ease-in-out;
+#navigation-container ul li a:hover,
+#navigation-container ul li button:hover {
+  background-color: rgba(80, 200, 120, 0.8);
+  border-left-color: #50C878 ;
+ 
 }
 
-/* Remove original global hover effects if they conflict with Tailwind or new media queries */
-/* The original #navigation-container:hover { width: 9%; } is now superseded by xl:hover:w-[9%] in JSX */
-/* and fixed widths in media queries. */
+/* User button styling */
+#navigation-container button {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-in-out;
+}
 
-/* The original #navigation-container:hover .nav-item-name { display: block; opacity: 1; } */
-/* is superseded by group-hover in JSX for XL and direct visibility in media queries. */
+#navigation-container button:hover {
+  border-color: rgba(0, 255, 98, 0.5);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* Smooth transitions for all interactive elements */
+#navigation-container * {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Custom scrollbar for navigation */
+#navigation-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+#navigation-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#navigation-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 215, 0, 0.5);
+  border-radius: 2px;
+}
+
+#navigation-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 215, 0, 0.7);
+}

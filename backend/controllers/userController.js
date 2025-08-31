@@ -1,6 +1,5 @@
 import User from "../models/userModels.js";
 import { asyncHandler } from "../middlewares/asyncHandler.js";
-import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import { generateToken } from "../utils/createToken.js";
 
@@ -42,7 +41,6 @@ export const loginUser = asyncHandler(async (req, res) => {
       password,
       existingUser.password
     );
-
     if (isPasswordValid) {
       generateToken(res, existingUser._id);
       res.status(200).json({
@@ -74,7 +72,7 @@ export const getAllUsers = asyncHandler(async (req, res, next) => {
 });
 
 export const getCurrentUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  const user = await User.findById(req.user._id).select("-password");
   if (user) {
     res.json({
       _id: user._id,

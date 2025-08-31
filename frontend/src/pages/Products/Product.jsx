@@ -17,8 +17,8 @@ const Product = ({ product }) => {
       <div className="p-4">
         <Link to={`/product/${product._id}`}>
           <h2 className="flex justify-between items-center text-base sm:text-lg">
-            <div className="text-gray-800 font-semibold">{product.name}</div>
-            <span className="bg-pink-100 text-pink-800 text-xs sm:text-sm font-medium px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+            <div className="text-white font-semibold">{product.name}</div>
+            <span className="bg-emerald-500 text-[#333333] text-xs sm:text-sm font-medium px-2.5 py-0.5 rounded-full">
               $ {product.price}
             </span>
           </h2>
@@ -27,6 +27,5 @@ const Product = ({ product }) => {
     </div>
   );
 };
-
 
 export default Product;

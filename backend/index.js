@@ -21,7 +21,7 @@ connectDB();
 const app = express();
 const allowedOrigins = [
   "https://style-store-nine.vercel.app",
-  "http://localhost:3000", // local React dev
+  "http://localhost:5173", // local React dev
 ];
 app.use(
   cors({
@@ -47,13 +47,6 @@ app.get("/api/config/paypal", (req, res) => {
   res.send({ clientId: process.env.PAYPAL_CLIENT_ID });
 });
 
-// if (process.env.NODE_ENV === "production") {
-//   app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-//   app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "../frontend", "dist", "index.html"));
-//   });
-// }
 
 app.use((req, res, next) => {
   res.status(404).json({ message: "Route not found" });

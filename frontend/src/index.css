@@ -3,10 +3,54 @@
 @source "../.flowbite-react/class-list.json";
 
 body{
-    background: #0f0f10;
-    color: #fff;
+    background: #333333;
+    color: #FFFFFF;
 }
 
 /* input,textarea{
-    color:#fff
+    color:#FFFFFF
 } */
+
+/* Custom utilities */
+
+/*
+
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+Smooth transitions
+* {
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 150ms;
+}
+
+Custom scrollbar
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #50C878;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #45a049;
+}
+    */

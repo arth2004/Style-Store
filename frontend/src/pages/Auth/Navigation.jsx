@@ -53,71 +53,70 @@ const Navigation = () => {
   return (
     <>
       <div
-        style={{ zIndex: 999 }}
-        className={`fixed top-0 left-0 h-screen bg-black text-white transition-all duration-300 ease-in-out ${
+        className={`fixed top-0 left-0 h-screen bg-gradient-to-b from-[#333333] to-[#0f0f10] text-white transition-all duration-300 ease-in-out ${
           showSidebar ? "flex" : "hidden"
-        } flex-col justify-between py-6 px-4 xl:flex xl:w-[7%] xl:hover:w-[9%] `}
+        } flex-col justify-between py-8 px-6 xl:flex xl:w-[7%] xl:hover:w-[20%] shadow-2xl z-50`}
         id="navigation-container"
-      > 
-        <div className="flex flex-col justify-center space-y-4">
+      >
+        <div className="flex flex-col justify-center space-y-6">
           <Link
             to="/"
-            className="flex items-center gap-3 mt-10 group transition-transform hover:translate-x-2"
+            className="flex items-center gap-3 group transition-all duration-200 hover:translate-x-2"
             onClick={closeSidebar}
           >
             <AiOutlineHome
-              className="text-xl group-hover:text-gray-300 transition-colors duration-200"
-              size={26}
+              className="text-xl text-[#F5F5F5] group-hover:text-white transition-colors duration-200"
+              size={24}
             />
             <span className="hidden nav-item-name group-hover:inline-block">
               HOME
-            </span>{" "}
+            </span>
           </Link>
           <Link
             to="/shop"
-            className="flex items-center gap-3 mt-10 group transition-transform hover:translate-x-2"
+            className="flex items-center gap-3 group transition-all duration-200 hover:translate-x-2"
             onClick={closeSidebar}
           >
             <AiOutlineShopping
-              className="text-xl group-hover:text-gray-300 transition-colors duration-200"
-              size={26}
+              className="text-xl text-[#F5F5F5] group-hover:text-white transition-colors duration-200"
+              size={24}
             />
             <span className="hidden nav-item-name group-hover:inline-block">
               SHOP
-            </span>{" "}
+            </span>
           </Link>
 
           <Link
             to="/cart"
-            className="flex items-center gap-3 mt-10 group hover:translate-x-2 transition-transform"
+            className="flex items-center gap-3 group hover:translate-x-2 transition-all duration-200"
             onClick={closeSidebar}
           >
             <div className="relative">
               <AiOutlineShoppingCart
-                className="text-xl group-hover:text-gray-300 transition-colors duration-200"
-                size={26}
+                className="text-xl text-[#F5F5F5] group-hover:text-white transition-colors duration-200"
+                size={24}
               />
               <CartCount />
             </div>
             <span className="hidden nav-item-name group-hover:inline-block">
-              Cart
+              CART
             </span>
           </Link>
 
           <Link
             to="/favorite"
-            className="flex items-center gap-3 mt-10 group hover:translate-x-2 transition-transform"
+            className="flex items-center gap-3 group hover:translate-x-2 transition-all duration-200"
             onClick={closeSidebar}
           >
             <div className="relative">
               <FaHeart
-                className="text-xl group-hover:text-gray-300 transition-colors duration-200"
-                size={20}
+                className="text-xl text-[#F5F5F5] group-hover:text-white transition-colors duration-200"
+                size={24}
               />
               <FavouritesCount />
             </div>
             <span className="hidden nav-item-name group-hover:inline-block">
-              Favorites
+              FAVORITES
             </span>
           </Link>
         </div>
@@ -126,9 +125,9 @@ const Navigation = () => {
           {userInfo && (
             <button
               onClick={toggleDropdown}
-              className="right-0 flex items-center gap-2 px-1 py-2 text-sm bg-gray-800 hover:bg-gray-700 rounded-md transition-colors duration-200"
+              className="flex items-center gap-2 px-3 py-2 text-sm bg-[#333333] hover:bg-[#50C878] rounded-md transition-colors duration-200 w-full justify-between"
             >
-              <span className="text-white font-semibold ">
+              <span className="text-white font-semibold truncate">
                 {userInfo?.username}
               </span>
               <svg
@@ -151,7 +150,7 @@ const Navigation = () => {
           )}
           {dropdownOpen && userInfo && (
             <ul
-              className={`absolute left-0 origin-top-left bg-gray-800 shadow-lg rounded-md text-sm text-gray-50 w-28 overflow-hidden transition-all duration-300 ${
+              className={`absolute left-0 origin-top-left bg-[#333333] shadow-lg rounded-md text-sm text-[#F5F5F5] w-32 overflow-hidden transition-all duration-300 ${
                 dropdownOpen
                   ? "max-h-[500px] opacity-100 translate-y-0"
                   : "max-h-0 opacity-0 -translate-y-2 pointer-events-none"
@@ -162,7 +161,7 @@ const Navigation = () => {
                   <li>
                     <Link
                       to="/admin/dashboard"
-                      className="block px-4 py-2 hover:bg-gray-700"
+                      className="block px-4 py-2 hover:bg-[#50C878]"
                       onClick={toggleDropdown}
                     >
                       Dashboard
@@ -171,7 +170,7 @@ const Navigation = () => {
                   <li>
                     <Link
                       to="/admin/productlist"
-                      className="block px-4 py-2 hover:bg-gray-700"
+                      className="block px-4 py-2 hover:bg-[#50C878]"
                       onClick={toggleDropdown}
                     >
                       Products
@@ -180,7 +179,7 @@ const Navigation = () => {
                   <li>
                     <Link
                       to="/admin/categorylist"
-                      className="block px-4 py-2 hover:bg-gray-700"
+                      className="block px-4 py-2 hover:bg-[#50C878]"
                       onClick={toggleDropdown}
                     >
                       Category
@@ -189,7 +188,7 @@ const Navigation = () => {
                   <li>
                     <Link
                       to="/admin/orderlist"
-                      className="block px-4 py-2 hover:bg-gray-700"
+                      className="block px-4 py-2 hover:bg-[#50C878]"
                       onClick={toggleDropdown}
                     >
                       Orders
@@ -198,7 +197,7 @@ const Navigation = () => {
                   <li>
                     <Link
                       to="/admin/userlist"
-                      className="block px-4 py-2 hover:bg-gray-700"
+                      className="block px-4 py-2 hover:bg-[#50C878]"
                       onClick={toggleDropdown}
                     >
                       Users
@@ -210,7 +209,7 @@ const Navigation = () => {
               <li>
                 <Link
                   to="/profile"
-                  className="block px-4 py-2 hover:bg-gray-700"
+                  className="block px-4 py-2 hover:bg-[#50C878]"
                   onClick={toggleDropdown}
                 >
                   Profile
@@ -228,27 +227,35 @@ const Navigation = () => {
           )}
 
           {!userInfo && (
-            <ul>
+            <ul className="space-y-4">
               <li>
                 <Link
                   to="/login"
-                  className="flex items-center mt-5 gap-2 hover:text-white text-gray-400 transition-transform transform hover:translate-x-2"
+                  className="flex p-2 rounded-full items-center gap-3 text-[#F5F5F5] hover:text-white "
                   onClick={closeSidebar}
                 >
-                  <AiOutlineLogin size={22} />
-                  <span className="hidden nav-item-name group-hover:inline-block">
-                    Login
+                  <AiOutlineLogin
+                    size={24}
+                    className="text-[#F5F5F5] group-hover:text-white transition-colors duration-200"
+                  />
+                  <span className="hidden nav-item-name group-hover:inline-block ">
+                    LOGIN
                   </span>
                 </Link>
               </li>
               <li>
                 <Link
                   to="/register"
-                  className="flex items-center mt-5 transition-transform transform hover:translate-x-2"
+                  className="flex p-2 rounded-full items-center gap-3 text-[#F5F5F5] hover:text-white"
                   onClick={closeSidebar}
                 >
-                  <AiOutlineUserAdd size={26} />
-                  <span className="hidden nav-item-name">REGISTER</span>
+                  <AiOutlineUserAdd
+                    size={24}
+                    className="text-[#F5F5F5] group-hover:text-white transition-colors duration-200"
+                  />
+                  <span className="hidden nav-item-name group-hover:inline-block">
+                    REGISTER
+                  </span>
                 </Link>
               </li>
             </ul>
@@ -257,7 +264,7 @@ const Navigation = () => {
       </div>
       {/* Menu Button */}
       <button
-        className="lg:hidden xl:hidden fixed top-2 z-[1000] p-2 bg-gray-800 text-white rounded-md"
+        className="lg:hidden xl:hidden fixed top-4 left-4 z-[1000] p-3 bg-gradient-to-r from-[#333333] to-[#50C878] text-white rounded-lg shadow-lg hover:from-[#50C878] hover:to-[#50C878] transition-all duration-200 hover:scale-105"
         onClick={toggleSidebar}
       >
         <AiOutlineMenu size={24} />

@@ -1,22 +1,23 @@
 const Modal = ({ isOpen, onClose, children }) => {
-    return (
-      <>
-        {isOpen && (
-          <div className="fixed inset-0 flex items-center justify-center z-50">
-            <div className="fixed inset-0 bg-black opacity-50"></div>
-            <div className="absolute top-[40%] right-[50%] bg-black p-4 rounded-lg z-10 text-right">
-              <button
-                className="text-white font-semibold hover:text-gray-900 focus:outline-none mr-2"
-                onClick={onClose}
-              >
-                X
-              </button>
-              {children}
-            </div>
-          </div>
-        )}
-      </>
-    );
-  };
-  
-  export default Modal;
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-50 overflow-y-auto">
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 bg-black bg-opacity-50 transition-opacity"
+        onClick={onClose}
+      />
+
+      {/* Modal Container */}
+      <div className="flex min-h-full items-center justify-center p-4">
+        {/* Modal Content */}
+        <div className="relative transform overflow-hidden rounded-lg shadow-xl transition-all w-full max-w-md mx-auto">
+          {children}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Modal;

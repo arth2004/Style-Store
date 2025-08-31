@@ -8,50 +8,67 @@ import backendBaseUrl from "../../config";
 
 const ProductCard = ({ p }) => {
   const dispatch = useDispatch();
+
   const addToCartHandler = (product, qty) => {
     dispatch(addToCart({ ...product, qty }));
-    toast.success("Item added successfully")
+    toast.success("Item added successfully");
   };
-  // const normalizedImagePath = p.image.replace(/\\/g, "/");
+
   return (
-    <div className="max-w-xs relative bg-[#1A1A1A] shadow dark:bg-gray-800 dark:border-gray-700">
-      <section className="relative">
+    <div className="group bg-[#333333] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 border border-[#333333] hover:border-[#50C878] h-full flex flex-col">
+      {/* Image Section */}
+      <section className="relative overflow-hidden bg-gray-900">
         <Link to={`/product/${p._id}`}>
-          <span className="absolute bottom-1 right-0.5 bg-pink-100 text-pink-800 text-sm font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-pink-900 dark:text-pink-300">
+          {/* Brand Badge */}
+          <span className="absolute top-3 left-3 bg-green-400  text-white text-xs font-semibold px-3 py-1 rounded-full z-10 shadow-lg">
             {p?.brand}
           </span>
-          <img
-            className="cursor-pointer w-full"
-            // src={`${backendBaseUrl}${normalizedImagePath}`}
-            src={p.image}
-            alt={p.name}
-            style={{ height: "170px", objectFit: "cover" }}
-          />
-        </Link>
-        <HeartIcon product={p} />
-      </section>
-      <div className="py-5">
-        <div className="flex justify-between">
-          <h5 className="mb-2 text-lg text-white dark:text-white">{p?.name}</h5>
 
-          <p className="font-semibold text-pink-500">
+          {/* Product Image */}
+          <div className="aspect-square overflow-hidden">
+            <img
+              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 cursor-pointer"
+              src={p.image}
+              alt={p.name}
+            />
+          </div>
+        </Link>
+
+        {/* Heart Icon */}
+        <div className="absolute top-3 right-3 z-10">
+          <HeartIcon product={p} />
+        </div>
+      </section>
+
+      {/* Content Section */}
+      <div className="p-4 flex-1 flex flex-col">
+        {/* Product Name and Price */}
+        <div className="mb-3 flex-1">
+          <h5 className="text-lg font-semibold text-white mb-2 line-clamp-2 group-hover:text-[#50C878] transition-colors duration-200 min-h-[3.5rem]">
+            {p?.name}
+          </h5>
+          <p className="text-2xl font-bold text-green mb-3">
             {p?.price?.toLocaleString("en-US", {
               style: "currency",
               currency: "USD",
             })}
           </p>
         </div>
-        <p className="mb-3 font-normal text-[#CFCFCF]">
-          {p?.description?.substring(0, 60)} ...
+
+        {/* Description */}
+        <p className="text-[#F5F5F5] text-sm mb-4 line-clamp-2 leading-relaxed min-h-[2.5rem]">
+          {p?.description?.substring(0, 80)}...
         </p>
-        <section className="flex justify-between items-center">
+
+        {/* Action Buttons */}
+        <section className="flex justify-between items-center mt-auto">
           <Link
             to={`/product/${p._id}`}
-            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-pink-700 rounded-lg hover:bg-pink-800 focus:ring-4 focus:outline-none focus:ring-pink-300 dark:bg-pink-600 dark:hover:bg-pink-700 dark:focus:ring-pink-800"
+            className="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-[#50C878] rounded-lg  focus:ring-4 focus:outline-none focus:ring-[#50C878] transition-all duration-200 hover:scale-105 shadow-lg flex-1 mr-3 justify-center"
           >
-            Read More
+            View Details
             <svg
-              className="w-3.5 h-3.5 ml-2"
+              className="w-4 h-4 ml-2"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -68,10 +85,11 @@ const ProductCard = ({ p }) => {
           </Link>
 
           <button
-            className="p-2 rounded-full cursor-pointer"
             onClick={() => addToCartHandler(p, 1)}
+            className="p-3 bg-[#333333] hover:bg-[#50C878] text-[#F5F5F5] hover:text-white rounded-lg cursor-pointer transition-all duration-200 hover:scale-110 shadow-lg group-hover:bg-[#50C878] group-hover:text-white flex-shrink-0"
+            title="Add to Cart"
           >
-            <AiOutlineShoppingCart size={25} />
+            <AiOutlineShoppingCart size={20} />
           </button>
         </section>
       </div>

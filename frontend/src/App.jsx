@@ -6,11 +6,13 @@ import "react-toastify/ReactToastify.css";
 const App = () => {
   return (
     <>
-    <ToastContainer/>
-      <div className="flex min-h-screen ">
+      <ToastContainer />
+      <div className="flex min-h-screen">
         <Navigation />
-        <main className=" px-4 mx-auto container lg:pl-30">
-          <Outlet />
+        <main className="flex-1 xl:ml-[7%] overflow-x-hidden">
+          <div className="w-full max-w-none ">
+            <Outlet />
+          </div>
         </main>
       </div>
     </>
